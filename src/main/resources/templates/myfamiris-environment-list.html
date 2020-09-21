@@ -1,0 +1,99 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="refresh" content="60">
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{webjars/font-awesome/5.12.0/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="icon" type="image/png" th:href="@{/images/favicon16.png}">
+    <title>Myfamiris Envs</title>
+</head>
+<body>
+<div th:include="navbar :: navigation"></div>
+<section class="jumbotron text-center mb-0 pb-3">
+    <h3>Myfamiris (myfamifed / eservices) environments</h3>
+</section>
+<div class="container text-center">
+
+    <section id="category">
+
+        <div class="row">
+            <div id="dev" class="category-column col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>DEV</h3>
+                    </div>
+                    <div class="card-body">
+                        <button type="button" class="btn btn-lg btn-block btn-outline-dark d-none">Check state</button>
+                        <table id="dev-envs" class="table" style="align-items: center;">
+                            <tr th:each="devEnv : ${devEnvironments}">
+                                <td class="big">
+                                    <h3>
+                                        <a th:href="@{'/environment/'+${devEnv.id }}" >
+                                        <span th:text="${devEnv.name}"
+                                              th:class="${devEnv.issue == null ? 'text-default' : 'text-danger'}"></span>
+                                        </a>
+                                    </h3>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="qa" class="category-column col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>QA</h3>
+                    </div>
+                    <div class="card-body">
+                        <button type="button" class="btn btn-lg btn-block btn-outline-dark d-none">Check state</button>
+                        <table id="qa-envs" class="table" style="align-items: center;">
+                            <tr th:each="qaEnv : ${qaEnvironments}">
+                                <td class="big">
+                                    <h3>
+                                        <a th:href="@{'/environment/'+${qaEnv.id }}" >
+                                        <span th:text="${qaEnv.name}"
+                                              th:class="${qaEnv.issue == null ? 'text-default' : 'text-danger'}"></span>
+                                        </a>
+                                    </h3>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="production" class="category-column col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>PRODUCTION</h3>
+                    </div>
+                    <div class="card-body">
+                        <button type="button" class="btn btn-lg btn-block btn-outline-dark d-none">Check state</button>
+                        <table id="prod-envs" class="table" style="align-items: center;">
+                            <tr th:each="prodEnv : ${prodEnvironments}">
+                                <td class="big">
+                                    <h3>
+                                        <a th:href="@{'/environment/'+${prodEnv.id }}" >
+                                        <span th:text="${prodEnv.name}"
+                                              th:class="${prodEnv.issue == null ? 'text-default' : 'text-danger'}"></span>
+                                        </a>
+                                    </h3>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script th:src="@{webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script th:src="@{webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+<script th:src="@{webjars/font-awesome/5.12.0/js/all.min.js}"></script>
+
+</body>
+</html>

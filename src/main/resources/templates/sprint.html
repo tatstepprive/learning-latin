@@ -1,0 +1,27 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="refresh" content="60">
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{webjars/font-awesome/5.12.0/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome/all.min.css}">
+    <link rel="icon" type="image/png" th:href="@{/images/favicon16.png}">
+    <title>Sprint</title>
+</head>
+<body>
+<div th:include="navbar :: navigation"></div>
+<section class="jumbotron text-center mb-0 pb-3">
+    <h3>Sprint 521</h3>
+</section>
+<div class="container text-center">
+
+    <img alt="UnderConstruction logo" width="190" height="196"  th:src="@{/images/under-construction.png}"  />
+
+</div>
+
+<script th:src="@{webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script th:src="@{webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+<script th:src="@{webjars/font-awesome/5.12.0/js/all.min.js}"></script>
+
+</body>
+</html>

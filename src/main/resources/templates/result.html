@@ -1,0 +1,75 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{webjars/font-awesome/5.12.0/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="icon" type="image/png" th:href="@{/images/favicon16.png}">
+    <title>Environments</title>
+</head>
+<body>
+<div th:include="navbar :: navigation"></div>
+<section class="jumbotron text-center mb-0 pb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8"><h3>I'M LEARNING</h3></div>
+            <div class="col-lg-2 text-right pt-2"><span th:text="${count}"></span></div>
+        </div>
+    </div>
+</section>
+<div class="container text-lg-center">
+    <div class="row">
+
+        <div class="col col-lg-12 text-lg-center feature-box" >
+
+          <!--          <img alt="info" width="24" height="24" th:src="@{/images/info-icon.png}"></img>-->
+                <div id="bad"  th:class="${ hasErrors ?'container':'d-none' }">
+                    <div class="display-4 text-default font-weight-bold text-lg-center text-danger mt-3">
+                        <h1><i class="fas fa-frown"></i></h1>
+                    </div>
+                </div>
+                <div id="good"  th:class="${ !hasErrors ?'container':'d-none' }">
+                    <div class="display-4 text-default font-weight-bold text-lg-center text-success mt-3">
+                        <h1><i class="fas fa-smile"></i></h1>
+                    </div>
+                </div>
+                <div class="display-4 text-default font-weight-bold text-lg-center">
+                        <span th:text="${word.nameNl}"></span>
+                    </div>
+                <div id="posted">
+                        <label for="latin0"></label>
+                        <input hidden class="form-control form-control-lg" th:type="text"   id="latin0" placeholder="latin" >
+                        <div class="display-4 text-default font-weight-bold text-lg-center">
+                            <span th:classappend="${firstError ? 'text-danger':'text-success'}"  th:text="${word.firstColumnLat}" ></span>
+                            <span th:classappend="${secondError ? 'text-danger':'text-success'}" th:text="${word.secondColumnLat}" ></span>
+                            <span th:classappend="${genderError ? 'text-danger':'text-success'}"  th:text="${'( '+word.gender+ ' )'}" ></span>
+                        </div>
+
+                </div>
+                 <div id="correction"  th:class="${ hasErrors ?'container':'d-none' }">
+                        <label for="latin1"></label>
+                        <input hidden class="form-control form-control-lg" th:type="text"   id="latin1" placeholder="latin" >
+                        <div class="display-4 text-default font-weight-bold text-lg-center text-success">
+                            <span  th:text="${correctWord.firstColumnLat}" ></span>
+                            <span  th:text="${correctWord.secondColumnLat}" ></span>
+                            <span  th:text="${'( '+correctWord.gender+ ' )'}" ></span>
+                        </div>
+                 </div>
+
+                <form th:action="@{/}"  method="get">
+                    <div class="col-auto">
+                        <button type="submit"  class="btn btn-primary mb-2 mt-5">NEXT</button>
+                    </div>
+                </form>
+        </div>
+
+
+    </div>
+</div>
+
+<script th:src="@{webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script th:src="@{webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+<script th:src="@{webjars/font-awesome/5.12.0/js/all.min.js}"></script>
+
+</body>
+</html>

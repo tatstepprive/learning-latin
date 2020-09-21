@@ -1,0 +1,94 @@
+.home {
+    min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+    display: flex;
+    align-items: center;
+}
+
+/* Freatures images */
+#features {
+    padding: 0% 7%;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.feature-title {
+    font-size: 1.5em;
+}
+
+.feature-img {
+    color: blue;
+}
+
+.feature-img:hover {
+    color: lightskyblue;
+}
+
+p {
+    color: #8f8f8f;
+}
+
+.feature-box {
+    padding: 5%;
+}
+
+#category {
+    padding: 10px;
+}
+
+.category-column {
+    padding: 3% 2%;
+}
+
+.category-text {
+    font-size: 3rem;
+    line-height: 1.5;
+}
+
+.jumbotron {
+    color: rgba(255,255,255,1);
+    background-color: #577b9e;
+}
+
+.navbar-custom {
+    background-color: #2c3e50;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,255,255,.5);
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,1);
+}
+/* change the color of active links */
+.navbar-custom .nav-item.active .nav-link
+{
+    color: lightgoldenrodyellow;
+    background-color: #577b9e;
+    text-shadow: 0px 2px 1px black,
+                 0px 4px 6px grey;
+}
+/* change the color of hovered links */
+.navbar-custom .nav-item:hover .nav-link{
+    color: rgba(255,255,255,1);
+    background-color: #425d78;
+}
+.navbar-toggler{
+    color: white;
+}
+
+.card-header{
+    color: rgba(255,255,255,1);
+    background-color: #577b9e;
+}
+
+.text-default{
+    color: #2c3e50;
+}
+
+a, a:hover {
+    text-decoration-line: none;
+}
