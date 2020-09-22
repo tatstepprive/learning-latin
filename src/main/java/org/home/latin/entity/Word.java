@@ -1,11 +1,7 @@
 package org.home.latin.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="word")
@@ -32,6 +28,14 @@ public class Word {
 
     @Column(name="image_path")
     private String imagePath;
+
+    @ManyToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+    @JoinTable(
+            name="test_word",
+            joinColumns = @JoinColumn(name="word_id"),
+            inverseJoinColumns = @JoinColumn(name="test_id")
+    )
+    List<Test> tests;
 
     public Word() {
     }
@@ -90,6 +94,14 @@ public class Word {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public List<Test> getTests() {
+        return tests;
+    }
+
+    public void setTests(List<Test> tests) {
+        this.tests = tests;
     }
 
     @Override

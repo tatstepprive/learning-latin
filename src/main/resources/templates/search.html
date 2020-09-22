@@ -1,0 +1,63 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!--  DONT refresh
+  <meta http-equiv="refresh" content="60">
+  -->
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{webjars/font-awesome/5.12.0/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="icon" type="image/png" th:href="@{/images/favicon16.png}">
+    <title>Latin</title>
+    <style type="text/css">
+        .pink{
+            background-color: pink;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div th:include="navbar :: navigation"></div>
+<section class="jumbotron text-center mb-0 pb-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8"><h3>I'M SEARCHING</h3></div>
+            <div class="col-lg-2 text-right pt-2"></div>
+        </div>
+    </div>
+</section>
+<div class="container text-lg-center mt-2">
+        <table id="allwords"
+           th:class="${ true ?'table':'d-none' }">
+        <thead class="table-success">
+        <tr>
+            <th scope="col" >ID</th>
+            <th scope="col" onclick="sortTable(0,'allwords')">NL</th>
+            <th scope="col" >LAT1</th>
+            <th scope="col" >LAT2</th>
+            <th scope="col" >GENDER</th>
+            <th scope="col" >TYPE</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="word : ${words}">
+            <td><span th:text="${word.id}"></span></td>
+            <td><span th:text="${word.nameNl}"></span></td>
+            <td><span th:text="${word.firstColumnLat}"></span></td>
+            <td><span th:text="${word.secondColumnLat}"></span></td>
+            <td><span th:text="${word.gender}"></span></td>
+            <td><span th:text="${word.type}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+
+    </div>
+
+</div>
+
+<script th:src="@{webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script th:src="@{webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+<script th:src="@{webjars/font-awesome/5.12.0/js/all.min.js}"></script>
+
+</body>
+</html>

@@ -17,7 +17,7 @@ public class EnvironmentController {
 public EnvironmentController(){
 
 }
-    @GetMapping("/test")
+    @GetMapping("/nvt")
     public String getHome(Model model){
         List<PostedWord> words=service.getTestedWords();
         PostedWord word =words.get(Utils.getRandomFromMax(words.size()));
@@ -28,7 +28,7 @@ public EnvironmentController(){
         words.remove(word);
         return "home";
     }
-    @PostMapping("/test")
+    @PostMapping("/nvt")
     public String homeSubmit(@ModelAttribute PostedWord word, Model model) {
         model.addAttribute("word", word);
         boolean fistColumnError=service.isFirstColumnError(word);

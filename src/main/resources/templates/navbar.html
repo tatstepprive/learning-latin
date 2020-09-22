@@ -13,29 +13,17 @@
                 <li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'nav-item active':'nav-item'}">
                     <a class="nav-link" th:href="@{/}">Home</a>
                 </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/itinera-environment-list' ? 'nav-item active':'nav-item '}">
-                    <a class="nav-link" th:href="@{/itinera-environment-list}">Itineris</a>
+                <li th:classappend="${#httpServletRequest.getRequestURI() == '/learn' ? 'nav-item active':'nav-item '}">
+                    <a class="nav-link" th:href="@{/learn}">Learn</a>
                 </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/trivia-environment-list' ? 'nav-item active':'nav-item '}">
-                    <a class="nav-link" th:href="@{/trivia-environment-list}">Trivia</a>
+                <li th:classappend="${#httpServletRequest.getRequestURI() == '/test' ? 'nav-item active':'nav-item '}">
+                    <a class="nav-link" th:href="@{/test}">Test</a>
                 </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/holmes-environment-list' ? 'nav-item active':'nav-item '}">
-                    <a class="nav-link" th:href="@{/holmes-environment-list}">Holmes</a>
+                <li th:classappend="${#httpServletRequest.getRequestURI() == '/score' ? 'nav-item active':'nav-item '}">
+                    <a class="nav-link" th:href="@{/score}">Score</a>
                 </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/famicontrol-environment-list' ? 'nav-item active':'nav-item '}">
-                    <a class="nav-link" th:href="@{/famicontrol-environment-list}">Famicontrol</a>
-                </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/myfamiris-environment-list' ? 'nav-item active':'nav-item '}">
-                    <a class="nav-link" th:href="@{/myfamiris-environment-list}">Myfamiris</a>
-                </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/alis-environment-list' ? 'nav-item active':'nav-item '}">
-                    <a class="nav-link" th:href="@{/alis-environment-list}">Alis</a>
-                </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/dms-environment-list' ? 'nav-item active':'nav-item '}">
-                    <a class="nav-link" th:href="@{/dms-environment-list}">DMS</a>
-                </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/sprint' ? 'nav-item active':'nav-item '}">
-                    <a class="nav-link" th:href="@{/sprint}">Sprint</a>
+                <li th:classappend="${#httpServletRequest.getRequestURI() == '/search' ? 'nav-item active':'nav-item '}">
+                    <a class="nav-link" th:href="@{/search}">Search</a>
                 </li>
             </ul>
         </div>
