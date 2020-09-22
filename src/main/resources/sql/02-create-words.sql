@@ -47,9 +47,25 @@ LOCK TABLES `word` WRITE;
 INSERT INTO `word` VALUES
 	(1,'grootvader', 'avus','avi','m', 'noun', '/images/intranet-logo.png'),
 	(2,'roos', 'rosa','rosae','v', 'noun', '/images/intranet-logo.png'),
-	(3,'geschenk', 'donum','doni','m', 'noun', '/images/intranet-logo.png'),
+	(3,'geschenk', 'donum','doni','o', 'noun', '/images/intranet-logo.png'),
 	(4,'vriend', 'amicus','amici','m', 'noun', '/images/intranet-logo.png'),
 	(5,'jaar', 'annus','anni','m', 'noun', '/images/intranet-logo.png');
+	(6,'ezel', 'asinus','asinī','m', 'noun', '/images/intranet-logo.png');
+	(7,'god', 'deus','deī','m', 'noun', '/images/intranet-logo.png');
+	(8,'meester', 'dominus','dominī','m', 'noun', '/images/intranet-logo.png');
+	(9,'zwaard', 'gladius','gladii','m', 'noun', '/images/intranet-logo.png');
+	(10,'meester', 'magister','magistri','m', 'noun', '/images/intranet-logo.png');
+	(11,'muur', 'mūrus','mūrī','m', 'noun', '/images/intranet-logo.png');
+	(12,'oog', 'oculus','oculī','m', 'noun', '/images/intranet-logo.png');
+	(13,'volk', 'populus','populi','m', 'noun', '/images/intranet-logo.png');
+	(14,'slaaf', 'servus','servī','m', 'noun', '/images/intranet-logo.png');
+	(15,'poort', 'porta','portae','v', 'noun', '/images/intranet-logo.png');
+	(16,'gevecht', 'pūgna','pūgnae','v', 'noun', '/images/intranet-logo.png');
+	(17,'aarde', 'terra','terrae','v', 'noun', '/images/intranet-logo.png');
+	(18,'land', 'terra','terrae','v', 'noun', '/images/intranet-logo.png');
+	(19,'leven', 'vita','vitae','v', 'noun', '/images/intranet-logo.png');
+	(19,'gebouw', 'aedĭfĭcĭum','aedĭfĭcĭī','o', 'noun', '/images/intranet-logo.png');
+	(20,'voorbeeld', 'exemplum','exempli','o', 'noun', '/images/intranet-logo.png');
 
 /*!40000 ALTER TABLE `word` ENABLE KEYS */;
 UNLOCK TABLES;
