@@ -17,4 +17,6 @@ public interface TestService {
     public void save(Test word);
 
     public void deleteById(int theId);
+
+    public Test findByName(String testName);
 }

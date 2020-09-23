@@ -103,6 +103,14 @@ public class Test {
         words.add(word);
     }
 
+    public Word getWordToTest() {
+        if (words == null) {
+            System.out.println("No words, nothing to go next");
+            return null;
+        }
+      return words.listIterator().next();
+    }
+
     public void removeWord(Word word) {
         if (words == null) {
             System.out.println("No words, nothing to remove");

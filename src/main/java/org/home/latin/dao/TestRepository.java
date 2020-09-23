@@ -17,5 +17,7 @@ public interface TestRepository extends JpaRepository<Test, Integer> {
     @Query("SELECT t FROM Test t WHERE  t.id between :fromId and :tillId")
     public List<Test> findFromTill(@Param("fromId") Integer fid, @Param("tillId") Integer tid);
 
+    public Test findByName(String name);
+
 }
 

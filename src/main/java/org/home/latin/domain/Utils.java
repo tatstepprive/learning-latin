@@ -1,5 +1,8 @@
 package org.home.latin.domain;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Utils {
 
     public static String toHex(String arg)  {
@@ -14,5 +17,12 @@ public class Utils {
     public static int getRandomFromMax(int max){
         return (int) Math.floor(Math.random()*max);
     }
+
+    public static String getNameTimeBased(){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HHmmss");
+        Date now=new Date();
+        return  format.format(now);
+    }
+
 
 }

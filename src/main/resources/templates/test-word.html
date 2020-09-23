@@ -12,7 +12,7 @@
     </div>
 </section>
 <div class="container text-lg-center">
-    <form method="post" th:object="${word}" th:action="@{/test}" autocomplete="off">
+    <form method="post" th:object="${word}" th:action="@{'/test/'+${testname}}" autocomplete="off">
         <div class="row">
             <div class="col col-lg-12 text-lg-center feature-box">
                 <!--          <img alt="info" width="24" height="24" th:src="@{/images/info-icon.png}"></img>-->

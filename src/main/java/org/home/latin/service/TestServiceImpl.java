@@ -54,4 +54,9 @@ public class TestServiceImpl implements TestService {
         testRepository.deleteById(theId);
     }
 
+    @Override
+    public Test findByName(String testName){
+        return testRepository.findByName(testName);
+    }
+
 }
