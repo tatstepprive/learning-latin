@@ -1,6 +1,7 @@
 package org.home.latin.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -102,6 +103,13 @@ public class Word {
 
     public void setTests(List<Test> tests) {
         this.tests = tests;
+    }
+
+    public void addTest(Test test) {
+        if (tests == null) {
+            tests = new ArrayList<>();
+        }
+        tests.add(test);
     }
 
     @Override

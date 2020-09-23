@@ -13,10 +13,10 @@
                 <li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'nav-item active':'nav-item'}">
                     <a class="nav-link" th:href="@{/}">Home</a>
                 </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/learn' ? 'nav-item active':'nav-item '}">
+                <li th:classappend="${#httpServletRequest.getRequestURI().startsWith('/learn') ? 'nav-item active':'nav-item '}">
                     <a class="nav-link" th:href="@{/learn}">Learn</a>
                 </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/test' ? 'nav-item active':'nav-item '}">
+                <li th:classappend="${#httpServletRequest.getRequestURI().startsWith('/test') ? 'nav-item active':'nav-item '}">
                     <a class="nav-link" th:href="@{/test}">Test</a>
                 </li>
                 <li th:classappend="${#httpServletRequest.getRequestURI() == '/score' ? 'nav-item active':'nav-item '}">

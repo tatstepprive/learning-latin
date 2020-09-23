@@ -41,6 +41,11 @@ public class WordServiceImpl implements WordService {
     }
 
     @Override
+    public List<Word> findFromTill(int theIdFrom, int theIdTill){
+        return wordRepository.findFromTill(theIdFrom, theIdTill);
+    }
+
+    @Override
     public void save(Word word) {
       wordRepository.save(word);
     }

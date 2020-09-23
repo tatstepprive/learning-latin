@@ -10,6 +10,8 @@ public interface WordService {
 
     public Word findById(int theId);
 
+    public List<Word> findFromTill(int theIdFrom, int theIdTill);
+
     public void save(Word word);
 
     public void deleteById(int theId);

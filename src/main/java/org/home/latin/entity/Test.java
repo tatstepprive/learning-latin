@@ -103,11 +103,29 @@ public class Test {
         words.add(word);
     }
 
+    public void removeWord(Word word) {
+        if (words == null) {
+            System.out.println("No words, nothing to remove");
+            return;
+        }
+        for(Word myWord: words){
+            if(word.getId()==myWord.getId()){
+                System.out.println("Removing word="+word);
+                words.remove(word);
+            }
+        }
+    }
+
     @Override
     public String toString() {
         return "Test{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", date=" + date +
+                ", startIndex=" + startIndex +
+                ", endIndex=" + endIndex +
+                ", numberWords=" + numberWords +
+                ", words=" + words +
                 '}';
     }
 }

@@ -1,0 +1,103 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--  DONT refresh
+    <meta http-equiv="refresh" content="60">
+    -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.12.0/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="icon" type="image/png" th:href="@{/images/favicon16.png}">
+    <title>Latin</title>
+    <style type="text/css">
+        .pink {
+            background-color: pink;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div th:include="navbar :: navigation"></div>
+<section class="jumbotron text-center mb-0 pb-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8"><h3>START TEST</h3></div>
+            <div class="col-lg-2 text-right pt-2"><span th:text="${count}"></span></div>
+        </div>
+    </div>
+</section>
+<div class="container text-lg-center">
+    <form method="post" th:object="${test}" th:action="@{/test}" autocomplete="off">
+        <div class="row">
+            <div class="col col-lg-12 feature-box">
+
+                <input hidden class="form-control form-control-lg" th:type="text" th:field="*{id}">
+                <input hidden class="form-control form-control-lg" th:type="text" th:field="*{name}">
+
+                <div class="row mb-2">
+                    <div class="col-lg-3">
+                    </div>
+                    <div class="col-lg-1 colored">
+                        <label class="mb-0 mt-2">Start:</label>
+                    </div>
+                    <div class="col-lg-2 pl-0 pr-0 mr-2">
+                        <input  class="form-control" th:type="text" th:field="*{startIndex}"
+                                placeholder="start index" required>
+                    </div>
+                    <div class="col-lg-1 colored">
+                        <label class="mb-0 mt-2">End:</label>
+                    </div>
+                    <div class="col-lg-2 pl-0 pr-0">
+                        <input class="form-control " type="text" th:field="*{endIndex}"
+                               placeholder="end index" required>
+                    </div>
+                    <div class="col-lg-3">
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-lg-3">
+                    </div>
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-2 pl-0 pr-0 mr-2">
+                    </div>
+                    <div class="col-lg-1 colored">
+                        <label class="mb-0 mt-2">Nr:</label>
+                    </div>
+                    <div class="col-lg-2 pl-0 pr-0 colored">
+                        <input class="form-control " type="text" th:field="*{numberWords}"
+                               placeholder="number" required>
+                    </div>
+                    <div class="col-lg-3">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                    </div>
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-2 pl-0 pr-0 mr-2">
+                    </div>
+                    <div class="col-lg-1 pl-0 pr-0">
+                        <input class="form-control " type="checkbox">
+                    </div>
+                    <div class="col-lg-2 colored">
+                        <label class="mb-0 mt-2">Random</label>
+                    </div>
+                    <div class="col-lg-3">
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-2 mt-5">START TEST</button>
+                </div>
+            </div>
+
+    </form>
+</div>
+
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/font-awesome/5.12.0/js/all.min.js}"></script>
+
+</body>
+</html>
