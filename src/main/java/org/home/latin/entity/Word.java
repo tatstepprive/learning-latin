@@ -77,6 +77,10 @@ public class Word {
         return gender;
     }
 
+    public String getAllLat(){
+        return getFirstColumnLat().concat(" ").concat(getSecondColumnLat()).concat(" (").concat(getGender()).concat(") ");
+    }
+
     public void setGender(String gender) {
         this.gender = gender;
     }

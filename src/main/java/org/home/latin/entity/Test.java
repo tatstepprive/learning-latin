@@ -24,10 +24,10 @@ public class Test {
     private Integer startIndex;
 
     @Column(name="end_index")
-    private int endIndex;
+    private Integer endIndex;
 
     @Column(name="number_words")
-    private int numberWords;
+    private Integer numberWords;
 
     @ManyToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
     @JoinTable(
@@ -72,19 +72,19 @@ public class Test {
         this.startIndex = startIndex;
     }
 
-    public int getEndIndex() {
+    public Integer getEndIndex() {
         return endIndex;
     }
 
-    public void setEndIndex(int endIndex) {
+    public void setEndIndex(Integer endIndex) {
         this.endIndex = endIndex;
     }
 
-    public int getNumberWords() {
+    public Integer getNumberWords() {
         return numberWords;
     }
 
-    public void setNumberWords(int numberWords) {
+    public void setNumberWords(Integer numberWords) {
         this.numberWords = numberWords;
     }
 

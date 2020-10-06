@@ -11,76 +11,28 @@
         </div>
     </div>
 </section>
-<div class="container text-lg-center">
-    <form method="post" th:object="${word}" th:action="@{/}" autocomplete="off">
-    <div class="row">
-            <div class="col col-lg-12 text-lg-center feature-box" >
-          <!--          <img alt="info" width="24" height="24" th:src="@{/images/info-icon.png}"></img>-->
-                <div class="display-4 text-default font-weight-bold text-lg-center">
-                        <span th:text="${word.nameNl}" th:field="*{nameNl}"></span>
-                    </div>
+    <div class="container text-lg-center">
+        <div >
+            <span  th:text="${result}" ></span>
+        </div>
+        <div id="details">
+            <table class="table" style="align-items: center;">
+                <tr th:each="knowledge : ${knowledges}">
+                    <td class="big">
+                        <h6 th:text="*{knowledge.word.nameNl}"></h6>
+                    </td>
+                    <td class="big">
+                        <h6 th:text="*{knowledge.word.getAllLat()}"></h6>
+                    </td>
+                    <td th:class="${knowledge.ok? 'text-success':'text-danger'}">
+                        <h4><i th:class="${knowledge.ok? 'fas fa-smile fa-sm':'fas fa-frown fa-sm'}"></i></h4>
+                    </td>
+                </tr>
+            </table>
 
-                       <input hidden class="form-control form-control-lg" th:type="text" th:field="*{id}">
-                       <input hidden class="form-control form-control-lg" th:type="text" th:field="*{nameNl}">
 
-                        <div class="row">
-                                        <div class="col-lg-6 pl-1 pr-0">
-                                                <label for="latin1"></label>
-                                                <input class="form-control form-control-lg" th:type="text"  th:field="*{firstColumnLat}" id="latin1" placeholder="latin first column" required>
-                                        </div>
-                                        <div class="col-lg-6 pl-1 pr-0">
-                                                <label for="latin2"></label>
-                                                <input class="form-control form-control-lg" type="text" th:field="*{secondColumnLat}" id="latin2" placeholder="latin second column" required>
-                                        </div>
-                        </div>
-                        <!--checkbox group-->
-                        <div class="mt-4">
-                                <div class="form-check form-check-inline ">
-                                    <input class="form-check-input" type="radio" name="gender" th:field="*{gender}" id="inlineRadio1" value="m" required>
-                                    <label class="form-check-label" for="inlineRadio1">M</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" th:field="*{gender}" id="inlineRadio2" value="v" required>
-                                    <label class="form-check-label" for="inlineRadio2">V</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" th:field="*{gender}" id="inlineRadio3" value="o" required>
-                                    <label class="form-check-label" for="inlineRadio3">O</label>
-                                </div>
-                        </div>
-                        <!--enc checkbox group-->
-                        <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary mb-2 mt-5">CHECK</button>
-                        </div>
-            </div>
-
-                </form>
-            </div>
-
+        </div>
     </div>
-     <!--   <section id="features">
-            <div class="row">
-                <div th:each="fdevtool : ${fdevtools}" class="col col-lg-4 col-md-12 feature-box" >
-                        <div class="d-flex justify-content-center ">
-                            <a  th:href="${fdevtool.url}"  target="_blank"><img th:alt="${fdevtool.name}+' logo'" width="90" height="96"  th:src="@{${fdevtool.imagePath}}"  />
-                            </a></div>
-                        <div class="d-flex justify-content-center">
-                            <h5 >
-                                <a th:href="${fdevtool.url}"  target="_blank"><span th:text="${fdevtool.name}"></span></a>
-                            </h5>
-                        </div>
-                        <div >
-                            <img alt="info" width="24" height="24" th:src="@{/images/info-icon.png}"></img>
-                            <span th:text="${fdevtool.desc}"></span>
-                            <div class="text-center font-italic">
-                                <span th:text="${fdevtool.teamInfo}"></span>
-                            </div>
-                        </div>
-                </div>
-            </div>
-        </section> -->
-
-</div>
 
 <script th:src="@{webjars/jquery/3.1.1/jquery.min.js}"></script>
 <script th:src="@{webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>

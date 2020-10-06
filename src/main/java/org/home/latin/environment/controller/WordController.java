@@ -40,13 +40,14 @@ public class WordController {
         model.addAttribute("test", test);
         System.out.println("In get /");
         System.out.println("Shown test="+test);
+        System.out.println("Schowing home");
         return "home";
     }
     @PostMapping("/")
     public String homeSubmit(@ModelAttribute Word word, Model model) {
         model.addAttribute("word", word);
         Word correctWord=service.findById(word.getId());
-        System.out.println("In post");
+        System.out.println("In homeSubmit post /");
         System.out.println("Recieved Word="+word);
         System.out.println("Correct Word="+correctWord);
         boolean fistColumnError=!word.getFirstColumnLat().equals(correctWord.getFirstColumnLat());
@@ -60,6 +61,7 @@ public class WordController {
         model.addAttribute("count", "words: "+0+"/"+service.findAll().size());
 
         System.out.println("firstError="+fistColumnError+ " secondError="+secondColumnError + " genderError="+genderError);
+        System.out.println("Schowing result");
         return "result";
     }
 
@@ -73,8 +75,9 @@ public class WordController {
         model.addAttribute("word", word);
         model.addAttribute("size", "words: "+words.size());
         model.addAttribute("count", "words: "+0+"/"+service.findAll().size());
-        System.out.println("In get");
+        System.out.println("In getLearn get /learn");
         System.out.println("Shown Word="+word);
+        System.out.println("Schowing learn");
         return "learn";
     }
 //--------/test get mappings-----------------------------
@@ -83,9 +86,10 @@ public class WordController {
         Test test=new Test();
         test.setName(getNameTimeBased());
         test.setDate(new Date());
-        System.out.println("In get /test");
+        System.out.println("In getTest get /test");
         System.out.println("Init test="+test);
         model.addAttribute("test", test);
+        System.out.println("Schowing test-start");
         return "test-start";
     }
 
@@ -93,16 +97,20 @@ public class WordController {
     public String getTestUnique(@PathVariable("testname") String testname, Model model) {
 
         Test test=testService.findByName(testname);
-        System.out.println("In get getTestUnique test/testName");
+        model.addAttribute("test", test);
+        System.out.println("In get getTestUnique test/"+testname);
         System.out.println("Test from db ="+test);
 
-        model.addAttribute("test", test);
-
         List<Knowledge> knowledges =knowledgeService.findAllByTest(test);
+        model.addAttribute("knowledges", knowledges);
+        int correctAnswers=0;
         List<Word> testedWords=new ArrayList<>();
         for (Knowledge knowledge: knowledges){
             testedWords.add(knowledge.getWord());
+            correctAnswers+=knowledge.getOk()?1:0;
         }
+        model.addAttribute("correctAnswers", correctAnswers);
+        model.addAttribute("result", "score: "+correctAnswers+"/"+knowledges.size());
         System.out.println("TESTED words:"+testedWords);
         List<Word> wordsToTest = test.getWords().stream()
                 .filter(e -> !testedWords.contains(e))
@@ -118,15 +126,9 @@ public class WordController {
             model.addAttribute("word", word);
             model.addAttribute("size", "words: "+test.getNumberWords());
             model.addAttribute("count", "words: "+testedWords.size()+"/"+test.getNumberWords());
-        }else{
-            test=new Test();
-            test.setName(getNameTimeBased());
-            test.setDate(new Date());
-            System.out.println("In get getTestUnique test/testName");
-            System.out.println("Init test="+test);
-            model.addAttribute("test", test);
         }
-        return word==null?"test-start":"test-word";
+        System.out.println("Showing score or test-word with word="+word);
+        return word==null?"score":"test-word";
     }
 //-----------/test post mappings-------------------------------------
     @PostMapping("/test")
@@ -134,9 +136,10 @@ public class WordController {
         List<Word> words=service.findFromTill(test.getStartIndex(), test.getEndIndex());
         test.setWords(words);
         test.setNumberWords(test.getWords().size());
-        System.out.println("In post /test Saving test="+test);
+        System.out.println("In testSubmit post /test");
+        System.out.println("Saving test="+test);
         testService.save(test);
-        System.out.println("In post /test Saved test="+test);
+        System.out.println("Saved test="+test);
         for(Word word: words){
             word.setFirstColumnLat("");
             word.setSecondColumnLat("");
@@ -147,10 +150,10 @@ public class WordController {
         model.addAttribute("testid", test.getId());
         model.addAttribute("testname", test.getName());
         model.addAttribute("word", word);
-        System.out.println("In post /test");
         System.out.println("Shown test="+test);
         System.out.println("Shown word="+word);
         model.addAttribute("count", "words: "+0+"/"+test.getNumberWords());
+        System.out.println("Showing test-word");
         return "test-word";
     }
 
@@ -158,11 +161,9 @@ public class WordController {
     public String postTestUnique(@PathVariable("testname") String testname, @ModelAttribute Word word, Model model) {
         model.addAttribute("word", word);
         Test test=testService.findByName(testname);
-        System.out.println("In post getTestUnique test/testName");
+        System.out.println("In getTestUnique post test/"+testname);
         System.out.println("Test from db ="+test);
         Word correctWord=service.findById(word.getId());
-
-        System.out.println("In post getTestUnique test/testname");
         System.out.println("Recieved Word="+word);
         System.out.println("Correct Word="+correctWord);
         boolean fistColumnError=!word.getFirstColumnLat().equals(correctWord.getFirstColumnLat());
@@ -191,40 +192,13 @@ public class WordController {
         knowledgeService.save(knowledge);
         Word nextWord=test.getWordToTest();
         model.addAttribute("nextWord", nextWord);
-
+        System.out.println("Showing result");
         return "result";
     }
-
-    @PostMapping("test/word")
-    public String wordSubmit(@ModelAttribute Word word, Model model) {
-        model.addAttribute("word", word);
-        Word correctWord=service.findById(word.getId());
-  //      int allWordsCount=service.findAll().size();
-  //      int nextId=allWordsCount<word.getId()+1?0:word.getId()+1;
-        List<Test> tests=word.getTests();
-        System.out.println(tests);
-        tests.get(0).removeWord(word);
-        Word nextWord=word.getTests().get(0).getWords().get(0);
-        System.out.println("In post test/word");
-        System.out.println("Recieved Word="+word);
-        System.out.println("Correct Word="+correctWord);
-        boolean fistColumnError=!word.getFirstColumnLat().equals(correctWord.getFirstColumnLat());
-        boolean secondColumnError=!word.getSecondColumnLat().equals(correctWord.getSecondColumnLat());
-        boolean genderError=!word.getGender().equals(correctWord.getGender());
-        model.addAttribute("firstError", fistColumnError);
-        model.addAttribute("secondError", secondColumnError);
-        model.addAttribute("genderError", genderError);
-        model.addAttribute("hasErrors", (fistColumnError||secondColumnError||genderError));
-        model.addAttribute("correctWord", correctWord);
-        model.addAttribute("count", "words: "+0+"/"+service.findAll().size());
-        model.addAttribute("nextWord", nextWord);
-
-        System.out.println("firstError="+fistColumnError+ " secondError="+secondColumnError + " genderError="+genderError);
-        return "result";
-    }
-
+    //--------/score get mappings-----------------------------
     @GetMapping("/score")
     public String getScore(Model model){
+        System.out.println("In getScore get /score");
         List<Word> words=service.findAll();
         Word word =words.get(Utils.getRandomFromMax(words.size()));
         word.setFirstColumnLat("");
@@ -232,17 +206,20 @@ public class WordController {
         word.setGender("");
         model.addAttribute("word", word);
         model.addAttribute("size", "words: "+words.size());
-        model.addAttribute("count", "words: "+0+"/"+service.findAll().size());
+        model.addAttribute("count", "");
         System.out.println("In get");
         System.out.println("Shown Word="+word);
         // words.remove(word);
+        System.out.println("Showing score");
         return "score";
     }
-
+    //--------/search get mappings-----------------------------
     @GetMapping("/search")
     public String getSearch(Model model){
+        System.out.println("In getSearch get /search");
         List<Word> words=service.findAll();
         model.addAttribute("words", words);
+        System.out.println("Showing search");
         return "search";
     }
 
