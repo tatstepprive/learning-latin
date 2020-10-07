@@ -59,4 +59,9 @@ public class TestServiceImpl implements TestService {
         return testRepository.findByName(testName);
     }
 
+    @Override
+    public Test findLast(){
+        return testRepository.findTopByOrderByIdDesc();
+    }
+
 }

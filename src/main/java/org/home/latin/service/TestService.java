@@ -19,4 +19,6 @@ public interface TestService {
     public void deleteById(int theId);
 
     public Test findByName(String testName);
+
+    public Test findLast();
 }

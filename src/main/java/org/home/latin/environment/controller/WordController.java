@@ -69,9 +69,6 @@ public class WordController {
     public String getLearn(Model model){
         List<Word> words=service.findAll();
         Word word =words.get(Utils.getRandomFromMax(words.size()));
-        word.setFirstColumnLat("");
-        word.setSecondColumnLat("");
-        word.setGender("");
         model.addAttribute("word", word);
         model.addAttribute("size", "words: "+words.size());
         model.addAttribute("count", "words: "+0+"/"+service.findAll().size());
@@ -199,17 +196,20 @@ public class WordController {
     @GetMapping("/score")
     public String getScore(Model model){
         System.out.println("In getScore get /score");
-        List<Word> words=service.findAll();
-        Word word =words.get(Utils.getRandomFromMax(words.size()));
-        word.setFirstColumnLat("");
-        word.setSecondColumnLat("");
-        word.setGender("");
-        model.addAttribute("word", word);
-        model.addAttribute("size", "words: "+words.size());
-        model.addAttribute("count", "");
-        System.out.println("In get");
-        System.out.println("Shown Word="+word);
-        // words.remove(word);
+        Test test=testService.findLast();
+        model.addAttribute("test", test);
+        System.out.println("Test from db ="+test);
+
+        List<Knowledge> knowledges =knowledgeService.findAllByTest(test);
+        model.addAttribute("knowledges", knowledges);
+        int correctAnswers=0;
+        List<Word> testedWords=new ArrayList<>();
+        for (Knowledge knowledge: knowledges){
+            testedWords.add(knowledge.getWord());
+            correctAnswers+=knowledge.getOk()?1:0;
+        }
+        model.addAttribute("correctAnswers", correctAnswers);
+        model.addAttribute("result", "score: "+correctAnswers+"/"+knowledges.size());
         System.out.println("Showing score");
         return "score";
     }

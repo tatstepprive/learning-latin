@@ -19,5 +19,7 @@ public interface TestRepository extends JpaRepository<Test, Integer> {
 
     public Test findByName(String name);
 
+    public Test findTopByOrderByIdDesc();
+
 }
 
