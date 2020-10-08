@@ -44,6 +44,7 @@ CREATE TABLE `word` (
 LOCK TABLES `word` WRITE;
 /*!40000 ALTER TABLE `word` DISABLE KEYS */;
 
+/*insert per bunch of 10 words 1/10*/
 INSERT INTO `word` (name_nl, first_column_lat, second_column_lat, gender, type, image_path)
     VALUES
 	('grootvader', 'avus','avi','m', 'noun', '/images/intranet-logo.png'),
@@ -55,7 +56,10 @@ INSERT INTO `word` (name_nl, first_column_lat, second_column_lat, gender, type, 
 	('god', 'deus','dei','m', 'noun', '/images/intranet-logo.png'),
 	('meester', 'dominus','domini','m', 'noun', '/images/intranet-logo.png'),
 	('zwaard', 'gladius','gladii','m', 'noun', '/images/intranet-logo.png'),
-	('meester', 'magister','magistri','m', 'noun', '/images/intranet-logo.png'),
+	('meester', 'magister','magistri','m', 'noun', '/images/intranet-logo.png');
+/*insert per bunch of 10 words 2/10*/
+INSERT INTO `word` (name_nl, first_column_lat, second_column_lat, gender, type, image_path)
+    VALUES
 	('muur', 'murus','muri','m', 'noun', '/images/intranet-logo.png'),
 	('oog', 'oculus','oculi','m', 'noun', '/images/intranet-logo.png'),
 	('volk', 'populus','populi','m', 'noun', '/images/intranet-logo.png'),
@@ -65,8 +69,47 @@ INSERT INTO `word` (name_nl, first_column_lat, second_column_lat, gender, type, 
 	('aarde', 'terra','terrae','v', 'noun', '/images/intranet-logo.png'),
 	('land', 'terra','terrae','v', 'noun', '/images/intranet-logo.png'),
 	('leven', 'vita','vitae','v', 'noun', '/images/intranet-logo.png'),
-	('gebouw', 'aedificium','aedificii','o', 'noun', '/images/intranet-logo.png'),
-	('voorbeeld', 'exemplum','exempli','o', 'noun', '/images/intranet-logo.png');
+	('gebouw', 'aedificium','aedificii','o', 'noun', '/images/intranet-logo.png');
+/*insert per bunch of 10 words 3/10*/
+INSERT INTO `word` (name_nl, first_column_lat, second_column_lat, gender, type, image_path)
+VALUES
+	('voorbeeld', 'exemplum','exempli','o', 'noun', null),
+	('forum (Romeins marktplein)', 'forum','fori','o', 'noun', null),
+	('wonder', 'monstrum','monstri','o', 'noun', null),
+	('monster', 'monstrum','monstri','o', 'noun', null),
+	('tempel', 'templum','templi','o', 'noun', null),
+	('wijn', 'vinum','vini','o', 'noun', null),
+	('goed', 'bonus','-a, -um','o', 'noun', null),
+	('Grieks', 'Graecus','-a, -um','o', 'noun', null),
+	('woedend', 'iratus','-a, -um','o', 'noun', null),
+	('lang', 'longus','-a, -um','o', 'noun', null);
+/*insert per bunch of 10 words 4/10*/
+INSERT INTO `word` (name_nl, first_column_lat, second_column_lat, gender, type, image_path)
+VALUES
+    ('prachtig', 'magnificus','-a, -um','o', 'noun', null),
+	('groot', 'magnus','-a, -um','o', 'noun', null),
+	('belangrijk', 'magnus','-a, -um','o', 'noun', null),
+	('slecht', 'malus','-a, -um','o', 'noun', null),
+	('nieuw', 'novus','-a, -um','o', 'noun', null),
+	('beste', 'optimus','-a, -um','o', 'noun', null),
+	('zeer goed', 'optimus','-a, -um','o', 'noun', null),
+	('Romeins', 'Romanus','-a, -um','o', 'noun', null),
+	('leider', 'dux','ducis','m', 'noun', null),
+	('moeder', 'meter','matris','v', 'noun', null);
+/*insert per bunch of 10 words 5/10*/
+INSERT INTO `word` (name_nl, first_column_lat, second_column_lat, gender, type, image_path)
+VALUES
+     ('lichaam', 'corpus','corporis','o', 'noun', null),
+     ('liefde', 'amor','amoris','m', 'noun', null),
+     ('tand', 'dens','dentis','m', 'noun', null),
+     ('mens', 'homo','hominis','m', 'noun', null),
+     ('soldaat', 'miles','militis','m', 'noun', null),
+     ('zon', 'sol','solis','m', 'noun', null),
+     ('boom', 'arbor','arboris','v', 'noun', null),
+     ('licht', 'lux','lucis','v', 'noun', null),
+     ('dood', 'mors','mortis','v', 'noun', null),
+     ('nacht', 'nox','noctis','v', 'noun', null);
+
 
 /*!40000 ALTER TABLE `word` ENABLE KEYS */;
 UNLOCK TABLES;

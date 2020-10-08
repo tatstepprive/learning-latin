@@ -12,33 +12,21 @@
     </div>
 </section>
 <div class="container text-lg-center mt-4">
-    <img alt="vini img"   th:src="@{/images/vini-vidi-vici.jpg}"  />
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-2">
-                <form th:action="@{/learn}"  method="get">
-                    <div class="col-auto">
-                        <button type="submit"  class="btn btn-custom mb-2 mt-3">LEARN</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-lg-2">
-                <form th:action="@{/test}"  method="get">
-                    <div class="col-auto">
-                        <button type="submit"  class="btn btn-custom mb-2 mt-3">TEST</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-lg-2">
-                <form th:action="@{/score}"  method="get">
-                    <div class="col-auto">
-                        <button type="submit"  class="btn btn-custom mb-2 mt-3">SCORE</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-lg-3"></div>
+    <img  class="rounded-circle img-fluid" alt="vini img"  th:src="@{/images/vini-vidi-vici.jpg}"  />
+    <div class="d-flex flex-column flex-md-row justify-content-md-center">
+
+        <div class="col-auto text-center ">
+            <a th:href="@{/learn}"  class="btn btn-custom mb-2 mt-3">LEARN</a>
         </div>
+
+        <div class="col-auto text-center ">
+            <a th:href="@{/test}"  class="btn btn-custom mb-2 mt-3">TEST</a>
+        </div>
+
+        <div class="col-auto text-center ">
+            <a th:href="@{/score}"  class="btn btn-custom mb-2 mt-3">SCORE</a>
+        </div>
+
     </div>
 </div>
 

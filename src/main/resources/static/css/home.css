@@ -110,7 +110,3 @@ a, a:hover {
 body {
     background-image: linear-gradient(to right, rgba(87, 123, 158,1),  rgba(87, 123, 158,0), rgba(87, 123, 158,0), rgba(87, 123, 158,1));
 }
-
-img {
-    border-radius: 50%;
-}
