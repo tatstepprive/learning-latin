@@ -12,7 +12,7 @@ public interface KnowledgeService {
 
     public Knowledge findById(int theId);
 
-    public void save(Knowledge word);
+    public void save(Knowledge knowledge);
 
     public void deleteById(int theId);
 

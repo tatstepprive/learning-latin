@@ -45,8 +45,8 @@ public class KnowledgeServiceImpl implements KnowledgeService {
 
 
     @Override
-    public void save(Knowledge test) {
-        knowledgeRepository.save(test);
+    public void save(Knowledge knowledge) {
+        knowledgeRepository.save(knowledge);
     }
 
     @Override

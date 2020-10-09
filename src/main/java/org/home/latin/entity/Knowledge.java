@@ -19,6 +19,10 @@ public class Knowledge {
     @JoinColumn(name = "word_id")
     private Word word;
 
+    @OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+    @JoinColumn(name = "student_input_id")
+    private StudentInput studentInput;
+
     @Column(name="ok")
     private Boolean ok;
 
@@ -50,6 +54,15 @@ public class Knowledge {
         this.word = word;
     }
 
+
+    public StudentInput getStudentInput() {
+        return studentInput;
+    }
+
+    public void setStudentInput(StudentInput studentInput) {
+        this.studentInput = studentInput;
+    }
+
     public Boolean getOk() {
         return ok;
     }
@@ -64,6 +77,7 @@ public class Knowledge {
                 "id=" + id +
                 ", test=" + test +
                 ", word=" + word +
+                ", studentInput=" + studentInput +
                 ", ok=" + ok +
                 '}';
     }

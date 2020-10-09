@@ -15,7 +15,8 @@ CREATE TABLE `knowledge` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `test_id` int(11) DEFAULT NULL,
   `word_id` int(11) DEFAULT NULL,
-  `ok` tinyint(1) DEFAULT NOT NULL,
+  `student_input_id` int(11) DEFAULT NULL,
+  `ok` tinyint(1) DEFAULT NULL,
 
   PRIMARY KEY (`id`),
 
@@ -32,6 +33,14 @@ CREATE TABLE `knowledge` (
   CONSTRAINT `FK_WORD_KNOW`
   FOREIGN KEY (`word_id`)
   REFERENCES `word` (`id`)
+
+  ON DELETE NO ACTION ON UPDATE NO ACTION,
+
+  KEY `FK_STUDENT_INPUT_KNOW` (`student_input_id`),
+
+  CONSTRAINT `FK_STUDENT_INPUT_KNOW`
+  FOREIGN KEY (`student_input_id`)
+  REFERENCES `student_input` (`id`)
 
   ON DELETE NO ACTION ON UPDATE NO ACTION
 

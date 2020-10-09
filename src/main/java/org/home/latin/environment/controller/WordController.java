@@ -2,9 +2,11 @@ package org.home.latin.environment.controller;
 
 import org.home.latin.domain.Utils;
 import org.home.latin.entity.Knowledge;
+import org.home.latin.entity.StudentInput;
 import org.home.latin.entity.Test;
 import org.home.latin.entity.Word;
 import org.home.latin.service.KnowledgeService;
+import org.home.latin.service.StudentInputService;
 import org.home.latin.service.TestService;
 import org.home.latin.service.WordService;
 import org.springframework.stereotype.Controller;
@@ -25,11 +27,16 @@ public class WordController {
     private WordService service;
     private TestService testService;
     private KnowledgeService knowledgeService;
+    private StudentInputService studentInputService;
 
-    public WordController(WordService theWordService, TestService theTestService, KnowledgeService theKnowledgeService) {
+    public WordController(WordService theWordService,
+                          TestService theTestService,
+                          KnowledgeService theKnowledgeService,
+                          StudentInputService theStudentInputService) {
         service = theWordService;
         testService= theTestService;
         knowledgeService=theKnowledgeService;
+        studentInputService=theStudentInputService;
     }
 
     @GetMapping("/")
@@ -176,15 +183,13 @@ public class WordController {
         System.out.println("firstError="+fistColumnError+ " secondError="+secondColumnError + " genderError="+genderError);
         model.addAttribute("size", "words: "+test.getNumberWords());
         model.addAttribute("count", "words: "+0+"/"+test.getNumberWords());
-        // todo save result (before showing result or after showing result with NEXT word action)
-        // but NEXT word action is get action and should be no post action to contain data to save
-        // todo calculate next word correct, dont show the same
-        // keep second array with words done? and take nextWord from substraction of to test words and done words
-      //  test.removeWord(correctWord);
-      //  testService.save(test);
+        StudentInput studentInput=new StudentInput(word);
+        System.out.println("studentInput="+studentInput);
+        studentInputService.save(studentInput);
         Knowledge knowledge=new Knowledge();
         knowledge.setTest(test);
         knowledge.setWord(correctWord);
+        knowledge.setStudentInput(studentInput);
         knowledge.setOk(!hasErrors);
         knowledgeService.save(knowledge);
         Word nextWord=test.getWordToTest();
@@ -209,7 +214,7 @@ public class WordController {
             correctAnswers+=knowledge.getOk()?1:0;
         }
         model.addAttribute("correctAnswers", correctAnswers);
-        model.addAttribute("result", "score: "+correctAnswers+"/"+knowledges.size());
+        model.addAttribute("result", "Score: "+correctAnswers+"/"+knowledges.size());
         System.out.println("Showing score");
         return "score";
     }

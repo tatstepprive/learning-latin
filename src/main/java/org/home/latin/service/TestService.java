@@ -14,7 +14,7 @@ public interface TestService {
 
     public List<Test> findFromTill(int theIdFrom, int theIdTill);
 
-    public void save(Test word);
+    public void save(Test test);
 
     public void deleteById(int theId);
 

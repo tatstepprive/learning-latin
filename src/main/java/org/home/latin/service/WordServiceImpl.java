@@ -1,7 +1,6 @@
 package org.home.latin.service;
 
 import org.home.latin.dao.WordRepository;
-import org.home.latin.domain.PostedWord;
 import org.home.latin.entity.Word;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
