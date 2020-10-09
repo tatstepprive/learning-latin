@@ -21,4 +21,6 @@ public interface TestService {
     public Test findByName(String testName);
 
     public Test findLast();
+
+    public List<Test> findTop10ByOrderByIdDesc();
 }

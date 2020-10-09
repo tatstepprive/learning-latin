@@ -64,4 +64,9 @@ public class TestServiceImpl implements TestService {
         return testRepository.findTopByOrderByIdDesc();
     }
 
+    @Override
+    public List<Test> findTop10ByOrderByIdDesc(){
+        return testRepository.findTop10ByOrderByIdDesc();
+    }
+
 }

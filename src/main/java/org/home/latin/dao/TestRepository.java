@@ -21,5 +21,7 @@ public interface TestRepository extends JpaRepository<Test, Integer> {
 
     public Test findTopByOrderByIdDesc();
 
+    public List<Test> findTop10ByOrderByIdDesc();
+
 }
 

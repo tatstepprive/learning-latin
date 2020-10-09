@@ -218,6 +218,30 @@ public class WordController {
         System.out.println("Showing score");
         return "score";
     }
+
+    //--------/list-scores get mappings-----------------------
+    @GetMapping("/list-scores")
+    public String getListScores(Model model){
+        System.out.println("In getListScores get /list-scores");
+        List<Test> tests=testService.findTop10ByOrderByIdDesc();
+        model.addAttribute("tests", tests);
+        System.out.println("Test from db ="+tests);
+/*
+        List<Knowledge> knowledges =knowledgeService.findAllByTest(test);
+        model.addAttribute("knowledges", knowledges);
+        int correctAnswers=0;
+        List<Word> testedWords=new ArrayList<>();
+        for (Knowledge knowledge: knowledges){
+            testedWords.add(knowledge.getWord());
+            correctAnswers+=knowledge.getOk()?1:0;
+        }
+        model.addAttribute("correctAnswers", correctAnswers);
+        model.addAttribute("result", "Score: "+correctAnswers+"/"+knowledges.size());
+        System.out.println("Showing score");
+
+ */
+        return "list-scores";
+    }
     //--------/search get mappings-----------------------------
     @GetMapping("/search")
     public String getSearch(Model model){

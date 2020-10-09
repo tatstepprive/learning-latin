@@ -1,0 +1,50 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div th:insert="navbar :: navigation"></div>
+<section class="jumbotron text-center mb-0 pb-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8"><h3>SCORES</h3></div>
+            <div class="col-lg-2 text-right pt-2"><span th:text="${count}"></span></div>
+        </div>
+    </div>
+</section>
+    <div class="container text-lg-center">
+        <div id="details">
+            <table class="table" style="align-items: center;">
+                <tr th:each="test : ${tests}">
+                    <td class="big">
+                        <h6 th:text="*{test.id}"></h6>
+                    </td>
+                    <td class="big">
+                        <h6 th:text="*{test.name}"></h6>
+                    </td>
+                    <td  >
+
+                        <table class="table border border-danger" style="align-items: center;">
+                            <tr th:each="word : ${test.words}">
+                                <td class="border border-primary">
+                                    <h6 th:text="*{word.nameNl}"></h6>
+                                </td>
+                                <td class="border border-primary">
+                                    <h6 th:text="*{word.getAllLat()}"></h6>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+            </table>
+
+
+        </div>
+    </div>
+
+<script th:src="@{webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script th:src="@{webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+<script th:src="@{webjars/font-awesome/5.12.0/js/all.min.js}"></script>
+
+</body>
+</html>
