@@ -2,30 +2,20 @@
 <body>
 <header th:fragment="navigation">
     <!--Start Fixed navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <nav id="mainNavbar" class="navbar nav-pills navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <a class="navbar-brand" href="#">Learn LATIN</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'nav-item active':'nav-item'}">
-                    <a class="nav-link" th:href="@{/}">Home</a>
-                </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI().startsWith('/learn') ? 'nav-item active':'nav-item '}">
-                    <a class="nav-link" th:href="@{/learn}">Learn</a>
-                </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI().startsWith('/test') ? 'nav-item active':'nav-item '}">
-                    <a class="nav-link" th:href="@{/test}">Test</a>
-                </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/score' ? 'nav-item active':'nav-item '}">
-                    <a class="nav-link" th:href="@{/score}">Score</a>
-                </li>
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/search' ? 'nav-item active':'nav-item '}">
-                    <a class="nav-link" th:href="@{/search}">Search</a>
-                </li>
-            </ul>
+            <div class="navbar-nav ml-auto">
+                    <a class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}"  th:href="@{/}">Home</a>
+                    <a class="nav-link"  th:classappend="${#httpServletRequest.getRequestURI().startsWith('/learn') ? 'active':''}" th:href="@{/learn}">Learn</a>
+                    <a class="nav-link"  th:classappend="${#httpServletRequest.getRequestURI().startsWith('/test') ? 'active':''}" th:href="@{/test}">Test</a>
+                    <a class="nav-link"  th:classappend="${#httpServletRequest.getRequestURI() == '/score' ? 'active':''}" th:href="@{/score}">Score</a>
+                    <a class="nav-link"  th:classappend="${#httpServletRequest.getRequestURI() == '/search' ? 'active':''}" th:href="@{/search}">Search</a>
+            </div>
         </div>
     </nav>
     <!--End Fixed navbar -->
