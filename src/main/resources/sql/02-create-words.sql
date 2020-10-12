@@ -95,7 +95,7 @@ VALUES
 	('zeer goed', 'optimus','-a, -um','o', 'noun', null),
 	('Romeins', 'Romanus','-a, -um','o', 'noun', null),
 	('leider', 'dux','ducis','m', 'noun', null),
-	('moeder', 'meter','matris','v', 'noun', null);
+	('moeder', 'mater','matris','v', 'noun', null);
 /*insert per bunch of 10 words 5/10*/
 INSERT INTO `word` (name_nl, first_column_lat, second_column_lat, gender, type, image_path)
 VALUES
